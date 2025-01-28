@@ -2,6 +2,7 @@
 Podria ser como una APi 
 */
 
+-->
 /*th es la fila 
 tr es el titulo para el grid
 td es columna */
@@ -15,6 +16,7 @@ let Titulo = ['Calendario 2025'];
 let InicioDelMes = new Date(2025, 0, 1);
 console.log(InicioDelMes);
 
+
 contenido += `<th colspan="7">${Titulo}</th></tr><tr>`;
 
 for (let i = 0; i < Meses.length; i++) {
@@ -23,7 +25,7 @@ for (let i = 0; i < Meses.length; i++) {
     for (let j = 0; j < diasSemana.length; j++) {
         contenido += `<th>${diasSemana[j]}</th>`;
     }
-
+ 
     contenido += '</tr><tr>';
 
     let primerDiaMes = new Date(2025, i, 1).getDay();
