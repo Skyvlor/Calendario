@@ -1,0 +1,42 @@
+#calendario {
+    width: 100%; /* Aumenta el ancho del calendario */
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: center;
+}
+
+#calendario td {
+    padding: 20px; /* Aumenta el padding para hacer las filas más gruesas */
+    border: 1px solid #ddd;
+    vertical-align: top; /* Alinea el contenido en la parte superior */
+    padding-top: 120px;
+}
+
+
+#calendario th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    
+}
+
+#calendario tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#calendario td:hover {
+    background-color: #f1f1f1;
+}
+
+#calendario .dia {
+    
+     text-align: right; /* Alinea los números a la izquierda */
+    font-weight:lighter;
+}
+
+h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
