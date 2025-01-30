@@ -2,51 +2,106 @@
 Podria ser como una APi 
 */
 
--->
 /*th es la fila 
 tr es el titulo para el grid
 td es columna */
 
+//let DiasSemana = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
+let Meses = [
+  "Enero",
+  "Febrero",
+  "Marzo",
+  "Abril",
+  "Mayo",
+  "Junio",
+  "Julio",
+  "Agosto",
+  "Septiembre",
+  "Octubre",
+  "Noviembre",
+  "Diciembre",
+];
 
-calendario = document.getElementById('calendario');
-let contenido = '<tr>';
-let diasSemana = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
-let Meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto','Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
-let Titulo = ['Calendario 2025'];
-let InicioDelMes = new Date(2025, 0, 1);
-console.log(InicioDelMes);
+let dates = document.getElementById("dates");
+let month = document.getElementById("month");
+let year = document.getElementById("year");
 
+let prevMonthDom = document.getElementById("prev-month");
+let nextMonthDom = document.getElementById("next-month");
 
-contenido += `<th colspan="7">${Titulo}</th></tr><tr>`;
+let currentDate = new Date();
+let currentDay = currentDate.getDate();
+let monthNumber = currentDate.getMonth();
+let currentYear = currentDate.getFullYear();
 
-for (let i = 0; i < Meses.length; i++) {
-    contenido += `<th colspan="7">${Meses[i]}</th></tr><tr>`;
+month.textContent = Meses[monthNumber];
+year.textContent = currentYear.toString();
 
-    for (let j = 0; j < diasSemana.length; j++) {
-        contenido += `<th>${diasSemana[j]}</th>`;
-    }
- 
-    contenido += '</tr><tr>';
+prevMonthDom.addEventListener("click", () => lastMonth());
+nextMonthDom.addEventListener("click", () => nextMonth());
 
-    let primerDiaMes = new Date(2025, i, 1).getDay();
-    primerDiaMes = (primerDiaMes + 6) % 7; // Ajustar para que Lunes sea el primer día
+writeMonth(monthNumber);
 
-    for (let k = 0; k < primerDiaMes; k++) {
-        contenido += '<td></td>';
-    }
-
-    let diasEnMes = new Date(2025, i + 1, 0).getDate();
-
-    for (let dia = 1; dia <= diasEnMes; dia++) {
-        contenido += `<td class='dia'>${dia}</td>`;
-
-        if ((dia + primerDiaMes) % 7 === 0) {
-            contenido += '</tr><tr>';
-        }
-    }
-
-    contenido += '</tr><tr>';
+/* FUNCIONES */
+function writeMonth(month) {
+  for (let i = 1; i <= getTotalDays(month); i++) {
+    dates.innerHTML += `<div >${i}</div>`;
+  }
 }
 
-contenido += '</tr>';
-calendario.innerHTML = contenido;
+function getTotalDays(month) {
+  if (month === -1) month = 11;
+
+  if (
+    month === 0 ||
+    month === 2 ||
+    month === 4 ||
+    month === 6 ||
+    month === 7 ||
+    month === 9 ||
+    month === 11
+  ) {
+    return 31;
+  } else if (month == 3 || month == 5 || month == 8 || month == 10) {
+    return30;
+  } else {
+    return isLeap() ? 29 : 28;
+  }
+}
+
+function isLeap() {
+  return (
+    currentYear % 100 !== 0 &&
+    (currentYear % 4 === 0 || currentYear % 400 === 0)
+  );
+}
+
+function startDat() {
+  let start = new Date(currentYear, monthNumber, 1);
+  return start.getDay() - 1 === -1 ? 6 : start.getDay() - 1;
+}
+function lastMonth() {
+  if (monthNumber !== 0) {
+    monthNumber--;
+  } else {
+    monthNumber = 11;
+    currentYear--;
+  }
+
+  setNewDate();
+}
+function nextMonth() {
+  if (monthNumber !== 11) {
+    monthNumber++;
+  } else {
+    monthNumber = 0;
+    currentYear++;
+  }
+
+  setNewDate();
+}
+function setNewDate() {
+  currentDate.setFullYear(currentYear, monthNumber, currentDay);
+  month.textContent = Meses[monthNumber];
+  year.textContent = currentYear.toString();
+}

@@ -1,42 +1,64 @@
 #calendario {
-    width: 100%; /* Aumenta el ancho del calendario */
-    border-collapse: collapse;
-    margin: 20px 0;
-    font-size: 18px;
-    text-align: center;
+  width: 100%; /* Aumenta el ancho del calendario */
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 18px;
+  text-align: center;
 }
 
 #calendario td {
-    padding: 20px; /* Aumenta el padding para hacer las filas más gruesas */
-    border: 1px solid #ddd;
-    vertical-align: top; /* Alinea el contenido en la parte superior */
-    padding-top: 120px;
+  max-width: 10px;
+  padding: 0px; /* Aumenta el padding para hacer las filas más gruesas */
+  border: 1px solid #ddd;
+  vertical-align: top; /* Alinea el contenido en la parte superior */
+  padding-top: 120px;
 }
 
+#calendario tr {
+  width: 100%;
+  padding: 20px;
+}
+
+#calendario tr:first-child {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  padding: 10px;
+}
 
 #calendario th {
-    background-color: #f2f2f2;
-    font-weight: bold;
-    
+  background-color: #f2f2f2;
+  font-weight: bold;
+  padding: 10px;
+  max-width: 0px;
 }
 
 #calendario tr:nth-child(even) {
-    background-color: #f9f9f9;
+  background-color: #f9f9f9;
 }
 
 #calendario td:hover {
-    background-color: #f1f1f1;
+  background-color: #f1f1f1;
 }
 
 #calendario .dia {
-    
-     text-align: right; /* Alinea los números a la izquierda */
-    font-weight:lighter;
+  text-align: right; /* Alinea los números a la izquierda */
+  font-weight: lighter;
 }
 
-h1 {
-    text-align: center;
-    font-size: 24px;
-    margin-bottom: 20px;
+.titulo {
+  background-color: aqua;
+  display: none;
 }
+.meses {
+  font-size: 60px;
+}
+@media screen and (max-width: 700px) {
+  #calendario {
+    width: 100%;
+  }
 
+  #calendario th {
+    max-width: 0px;
+    font-size: 9px;
+  }
+}
