@@ -1,44 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendario</title>
-    <!-- <link rel="stylesheet" href="Vista/style.css"> -->
+    <link rel="stylesheet" href="Vista/style.css">
 </head>
+
 <body>
 
-    
-
-        
-        <table id="Calendario">
-        <td colspan="7"><div class="calendarinfo">
-            <div id="prev-month">Prev</div>
-            <div id="month">Hola</div>
-            <div id="year">NoHola</div>
-            <div id="next-month">Next</div>
-        </div></td>
-
-        <th>
-            <td>Lun</td>
-            <td>Mar</td>
-            <td>Mie</td>
-            <td>Juv</td>
-            <td>Vie</td>
-            <td>Sab</td>
-            <td>Dom</td>
-        </th>
 
 
-            <td> <div id="dates"></div>
-            </td>
-        </table>
 
-        
-    
+    <table id="Calendario">
+        <td class="calendarinfo" >
+            <div >
+                <div id="prev-month">Prev</div>
+                <div id="month"></div>
+                <div id="year"></div>
+                <div id="next-month">Next</div>
+            </div>
+
+        </td>
+
+        <td class="weekDays" colspan="7">
+            <div>Lun</div>
+            <div>Mar</div>
+            <div>Mie</div>
+            <div>Juv</div>
+            <div>Vie</div>
+            <div>Sab</div>
+            <div>Dom</div>
+        </td>
+        <tr></tr>
+
+
+        <td class="days" colspan="7">
+            <div id="dates"></div>
+        </td>
+    </table>
+
+
+
 </body>
 
 <footer>
     <script src="Controlador/calendario.js"></script>
 </footer>
+
 </html>
