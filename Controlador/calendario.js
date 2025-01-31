@@ -44,6 +44,11 @@ writeMonth(monthNumber);
 
 /* FUNCIONES */
 function writeMonth(month) {
+  for (let i = startDate(); i > 0; i--) {
+    dates.innerHTML += `<div class ="lastdays">
+    ${getTotalDays(monthNumber - 1) - (i - 1)}</div>`;
+  }
+
   for (let i = 1; i <= getTotalDays(month); i++) {
     dates.innerHTML += `<div >${i}</div>`;
   }
@@ -63,7 +68,7 @@ function getTotalDays(month) {
   ) {
     return 31;
   } else if (month == 3 || month == 5 || month == 8 || month == 10) {
-    return30;
+    return 30;
   } else {
     return isLeap() ? 29 : 28;
   }
@@ -76,7 +81,7 @@ function isLeap() {
   );
 }
 
-function startDat() {
+function startDate() {
   let start = new Date(currentYear, monthNumber, 1);
   return start.getDay() - 1 === -1 ? 6 : start.getDay() - 1;
 }
@@ -104,4 +109,9 @@ function setNewDate() {
   currentDate.setFullYear(currentYear, monthNumber, currentDay);
   month.textContent = Meses[monthNumber];
   year.textContent = currentYear.toString();
+  dates.textContent = "";
+  writeMonth(monthNumber);
 }
+// debug startDate
+// se debe llamar desde css para iniciar el start grid column
+// console.log("este es el dia de inicio" + " " + startDate());
