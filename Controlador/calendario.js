@@ -50,8 +50,33 @@ function writeMonth(month) {
   }
 
   for (let i = 1; i <= getTotalDays(month); i++) {
-    dates.innerHTML += `<div >${i}</div>`;
+    let dayclass = "";
+    //dates.innerHTML += `<div >${i}</div>`;
+
+    if (
+      i === esteDia() &&
+      monthNumber === esteMes() &&
+      currentYear === esteAno()
+    ) {
+      dayclass = "estedia";
+      //Aquí se generaba un error y es que toma el día actual pero suma uno al dia siguiente.
+    }
+    dates.innerHTML += `<div class = ${dayclass}>${i}</div>`;
   }
+}
+
+function esteDia() {
+  let estedia = new Date().getDate();
+
+  return estedia;
+}
+function esteMes() {
+  let estemes = new Date().getMonth();
+  return estemes;
+}
+function esteAno() {
+  let esteano = new Date().getFullYear();
+  return esteano;
 }
 
 function getTotalDays(month) {
