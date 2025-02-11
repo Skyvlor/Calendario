@@ -26,6 +26,7 @@ body {
   background-color: #4a4e69;
   border-radius: 20px;
   /*justify-items: center;*/
+  box-shadow: 10px 5px 5px #1f1a18;
 }
 
 .weekDays {
